@@ -1,9 +1,9 @@
-(ns techprobono.test.app
+(ns techprobono.test.web
   (:use clojure.test
         ring.mock.request
-        techprobono.app))
+        techprobono.web))
 
-(deftest test-app
+(deftest test-web
   (testing "index page"
     (let [response (app (request :get "/index.html"))]
       (is (= (:status response) 200))))

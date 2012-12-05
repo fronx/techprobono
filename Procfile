@@ -1,1 +1,2 @@
-web: lein trampoline run -m techprobono.web 3000
+web: lein trampoline run -m techprobono.web
+db: postgres -D data
