@@ -2,10 +2,18 @@
   (:use compojure.core)
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
-            [ring.adapter.jetty :as ring]))
+            [ring.adapter.jetty :as ring]
+            [techprobono.data :as data]))
+
+(defn list-good-causes []
+  (str (data/fetch-good-causes)))
+
+(defn show-good-cause [id]
+  (str (data/fetch-good-cause id)))
 
 (defroutes web-routes
-  (GET "/hello-world" [] "hello-world")
+  (GET "/good-causes" [] (list-good-causes))
+  (GET "/good-causes/:id" [id] (show-good-cause id))
   (route/resources "/")
   (route/not-found "Not Found"))
 

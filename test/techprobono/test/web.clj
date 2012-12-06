@@ -8,10 +8,13 @@
     (let [response (app (request :get "/index.html"))]
       (is (= (:status response) 200))))
 
-  (testing "main route"
-    (let [response (app (request :get "/hello-world"))]
-      (is (= (:status response) 200))
-      (is (= (:body response) "hello-world"))))
+  (testing "good causes route"
+    (let [response (app (request :get "/good-causes"))]
+      (is (= (:status response) 200))))
+
+  (testing "good cause route"
+    (let [response (app (request :get "/good-cause/1"))]
+      (is (= (:status response) 200))))
 
   (testing "not-found route"
     (let [response (app (request :get "/invalid"))]
