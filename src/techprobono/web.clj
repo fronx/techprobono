@@ -9,7 +9,18 @@
   (route/resources "/")
   (route/not-found "Not Found"))
 
-(def app (handler/site web-routes))
+(defn rewrite-map [uri]
+  (or ({ "/" "/index.html"
+       } uri)
+      uri))
+
+(defn uri-rewrites [handler]
+  (fn [req]
+    (handler
+      (update-in req [:uri] rewrite-map))))
+
+(def app (-> (handler/site web-routes)
+             (uri-rewrites)))
 
 (defn start [port]
   (ring/run-jetty (var app) {:port (or port 8080)
