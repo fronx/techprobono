@@ -54,9 +54,9 @@ Then, unless you want to do some more things with the database right away, stop 
 
 ### 2. Configure
 ```bash
-cp .env.sample .env
+cp .env.example .env
 ```
-Adjust the `DATABASE_URL` depending on your database user settings. This is the configuration parameter that your local techprobono instance will use to connect to your local database server.
+Edit the file `.env` and adjust the `DATABASE_URL` depending on your database user settings. This is the configuration parameter your local techprobono instance will use to connect to your local database server.
 
 ### 3. Run
 ```bash
