@@ -32,7 +32,7 @@ brew install foreman
 ```
 Foreman is a tool for running applications via `Procfile` definitions. We will be using it to run a local database server and the techprobono application itself.
 
-### 2. Create a database
+### 3. Create a database
 From the root of this repo, run this:
 ```bash
 initdb data
@@ -48,13 +48,13 @@ createdb techprobono
 ```
 Then, unless you want to do some more things with the database right away, stop the database server to free up the port.
 
-### 3. Configure
+### 4. Configure
 ```bash
 cp .env.sample .env
 ```
 Adjust the `DATABASE_URL` depending on your database user settings. This is the configuration parameter that your local techprobono instance will use to connect to your local database server.
 
-### 4. Run
+### 5. Run
 ```bash
 foreman start
 ```
