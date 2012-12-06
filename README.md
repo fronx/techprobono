@@ -19,20 +19,24 @@ Maybe you are a small family-run charity with your base firmly in the spare room
 
 You can run this application on your local machine. Here are the steps:
 
-### 1. Install postgresql
-On Mac, that would be:
+### 0. Prerequisites (Mac)
+
 ```bash
 brew install postgresql
 ```
+Postgresql is a database. You may ask "why not MySQL?". Well, Heroku supports postgresql and it's kind of nice to stay compatible with them.
 
-### 2. Install foreman
-On Mac:
 ```bash
 brew install foreman
 ```
 Foreman is a tool for running applications via `Procfile` definitions. We will be using it to run a local database server and the techprobono application itself.
 
-### 3. Create a database
+```bash
+brew install leiningen --devel
+```
+Leiningen is a tool that makes it easy to set up Clojure applications with all their dependencies.
+
+### 1. Create a database
 From the root of this repo, run this:
 ```bash
 initdb data
@@ -48,15 +52,21 @@ createdb techprobono
 ```
 Then, unless you want to do some more things with the database right away, stop the database server to free up the port.
 
-### 4. Configure
+### 2. Configure
 ```bash
 cp .env.sample .env
 ```
 Adjust the `DATABASE_URL` depending on your database user settings. This is the configuration parameter that your local techprobono instance will use to connect to your local database server.
 
-### 5. Run
+### 3. Run
 ```bash
 foreman start
 ```
 This will start two processes in parallel: a database and an application process.
+
 Go to your browser and open http://localhost:3000 and it should show the techprobono home page.
+
+### 4. Create schema
+```bash
+foreman run lein run -m techprobono.schema
+```
