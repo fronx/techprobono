@@ -64,7 +64,7 @@ foreman start
 ```
 This will start two processes in parallel: a database and an application process.
 
-Go to your browser and open http://localhost:3000 and it should show the techprobono home page.
+Go to your browser and open [http://localhost:3000](http://localhost:3000) and it should show the techprobono home page.
 
 ### 4. Create schema
 ```bash
